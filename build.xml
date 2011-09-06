@@ -1,0 +1,50 @@
+<project name="Scadoop" default="jar" basedir=".">
+
+  <property environment="env"/> <!-- allow yoinking environment variables with env.VAR -->
+
+  <property name="src" value="src" />
+  <property name="build" value="./bin" />
+  <property name="jarFile" value="scadoop.jar" />
+
+  <property name="scala.lib.dir" location="${env.SCALA_HOME}/lib"/>
+  <property name="hadoop" location="${env.HADOOP_HOME}"/>
+
+  <taskdef resource="scala/tools/ant/antlib.xml">
+    <classpath>
+      <pathelement location="${scala.lib.dir}/scala-compiler.jar"/>
+      <pathelement location="${scala.lib.dir}/scala-library.jar"/>
+    </classpath>
+  </taskdef>
+
+  <target name="init">
+    <fail message="Please set the $HADOOP_HOME environment variable to point to your Hadoop installation." unless="env.HADOOP_HOME"/>
+    <fail message="Please set the $SCALA_HOME environment variable to point to your Scala installation." unless="env.SCALA_HOME"/>
+  </target>
+  
+  <target name="compile" depends="init">
+    <scalac srcdir="${src}" destdir="${build}">
+      <classpath>
+        <fileset dir="${hadoop}"><include name="hadoop-*-core.jar" /></fileset>
+        <pathelement location="${hadoop}/lib/commons-logging-api-1.0.4.jar" />
+        <pathelement location="${scala.lib.dir}/scala-library.jar" />
+      </classpath>
+      <!-- <include name="wordcount.scala" /> -->
+      <include name="wordcount-scadoop.scala" />
+      <include name="scadoop.scala" />
+    </scalac>
+  </target>
+  
+
+  <target name="jar" depends="compile">
+    <jar destfile="${jarFile}">
+      <fileset dir="${build}" includes="**/*.class **/*.xml **/*.properties" />
+      
+      <!-- Bundle all required classes in jar -->
+      <!--<zipgroupfileset dir="${ivy.lib.dir}" includes="*.jar" excludes="junit*.jar,ant*.jar,findbugs*.jar,bcel*.jar,asm*.jar" />-->
+      
+      <manifest>
+	<attribute name="Main-Class" value="WordCountApp" />
+      </manifest>
+    </jar>
+  </target>
+</project>
