@@ -32,3 +32,19 @@ Let's have a look classic wordcount example written in Scadoop. If you have a lo
   exit(pipeline.runWithExitCode(inDir, outDir, ""))
 }
 ```
+
+Building
+========
+
+```bash
+set HADOOP_HOME=/the/path
+set SCALA_HOME=/the/path
+ant
+```
+
+Running the Example
+===================
+
+```bash
+./run_example.sh
+```
