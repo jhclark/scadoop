@@ -13,6 +13,7 @@ What Scadoop does differently:
 * Uses the Java API directly making it faster than dumbo while requiring far less code than writing directly in Java
 
 Let's have a look classic wordcount example written in Scadoop. If you have a lot of time on your hands, you can also have a look at the original Java Hadoop API version [http://wiki.apache.org/hadoop/WordCount].
+
 ```scala
 @serializable object WordCountApp extends ScadoopApp {
   val inDir = args(0)
