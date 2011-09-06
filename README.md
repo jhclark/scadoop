@@ -7,6 +7,7 @@ Introduction
 We draw heavily from David Hall's smr (link) and the Python dumbo (link) module.
 
 What Scadoop does differently:
+
 * We use implicit string to text conversion
 * You only need to declare the writable types of your mapper reducer once. ever.
 * You can specify closures for your mapper and reducer. They will be serialized over the wire without the need for mangling into configuration strings.
