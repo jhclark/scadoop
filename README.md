@@ -7,7 +7,7 @@ One day, the obscene verbosity of writing MapReduce applications using the Hadoo
 Introduction
 ============
 
-We draw heavily from David Hall's [https://github.com/dlwh/smr SMR] and the Python [https://github.com/klbostee/dumbo Dumbo] module.
+We draw heavily from David Hall's [SMR](https://github.com/dlwh/smr) and the Python [Dumbo](https://github.com/klbostee/dumbo) module.
 
 What Scadoop does differently:
 
@@ -17,7 +17,7 @@ What Scadoop does differently:
 * Uses the Java API directly making it faster than dumbo while requiring far less code than writing directly in Java.
 * For I/O bound jobs, the Java API (and therefore Scadoop) should be faster than even C++ with Hadoop Pipes.
 
-Let's have a look classic wordcount example written in Scadoop. If you have a lot of time on your hands, you can also have a look at the original Java Hadoop API version [http://wiki.apache.org/hadoop/WordCount].
+Let's have a look classic wordcount example written in Scadoop. If you have a lot of extra reading time on your hands, you can also have a look at the original Java Hadoop API version at http://wiki.apache.org/hadoop/WordCount.
 
 ```scala
 @serializable object WordCountApp extends ScadoopApp {
