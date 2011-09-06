@@ -53,4 +53,5 @@ Running the Example
 
 ```bash
 ./run_example.sh
+less example/out/part-r-*
 ```
