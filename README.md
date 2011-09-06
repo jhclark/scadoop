@@ -37,6 +37,8 @@ Let's have a look classic wordcount example written in Scadoop. If you have a lo
 }
 ```
 
+NOTE: While I have done some basic tests on this code, they have only been surface-level. A full test suite and thorough testing in many environments is still pending. You should help. :-) Let me know how things go for you. Until then, I recommend doing a bit of testing before deploying in any critical applications.
+
 Building
 ========
 
