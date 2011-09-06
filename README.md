@@ -21,9 +21,6 @@ Let's have a look classic wordcount example written in Scadoop. If you have a lo
 
 ```scala
 @serializable object WordCountApp extends ScadoopApp {
-  val inDir = args(0)
-  val outDir = args(1)
-
   val prefix = "#" // magically gets passed to all mappers/reducers via closure serialization
   val one = new IntWritable(1) // don't recreate this every time
 
@@ -33,7 +30,7 @@ Let's have a look classic wordcount example written in Scadoop. If you have a lo
     = for( (key, values) <- records) yield (key, new IntWritable(values.map(_.get).sum))
 
   val pipeline = Pipeline.add("Word Count Job", mapper, reducer, combiner=Some(reducer _))
-  exit(pipeline.runWithExitCode(inDir, outDir, ""))
+  exit(pipeline.runWithExitCode(inDir = args(0), outDir = args(1), tmpDir = ""))
 }
 ```
 
