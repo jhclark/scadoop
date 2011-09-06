@@ -7,7 +7,7 @@ One day, the obscene verbosity of writing MapReduce applications using the Hadoo
 Introduction
 ============
 
-We draw heavily from David Hall's smr (link) and the Python dumbo (link) module.
+We draw heavily from David Hall's [https://github.com/dlwh/smr SMR] and the Python [https://github.com/klbostee/dumbo Dumbo] module.
 
 What Scadoop does differently:
 
